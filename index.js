@@ -1,7 +1,8 @@
-require("dotenv/config")
+const dotenv = require("dotenv")
 const Discord = require('discord.js');
 const client = new Discord.Client()
 const config = require("./config.json");
+if (process.env.NODE_ENV != 'production') { dotenv.config() }
 const secret = process.env.TOKEN
 
 client.on('ready', () => {
