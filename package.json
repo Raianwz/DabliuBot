@@ -5,7 +5,7 @@
   "author": "RaianWZ",
   "license": "MIT",
   "scripts": {
-    "start":"node index.js"
+    "start":"node ."
   },
   "dependencies": {
     "discord.js": "^12.5.3",
