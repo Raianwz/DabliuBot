@@ -7,7 +7,7 @@ const secret = process.env.TOKEN
 client.on('ready', () => {
     client.user.setActivity('!Dados & FRIFAS', ({ type: "PLAYING" }))
     console.log("Estou online")
-    console.log(`Bot iniciado em ${client.users.cache.size} usuários, ${client.channels.cache.size},em ${client.guilds.cache.size} servidores`)
+    console.log(`Bot iniciado em ${client.channels.cache.size} canais de ${client.guilds.cache.size} servidores`)
 })
 
 client.on('message', message => {
@@ -19,14 +19,18 @@ client.on('message', message => {
             .trim().slice(config.prefix.length)
             .split(/ +/g);
         const comando = args.shift().toLocaleLowerCase();
-
-        try {
-            const comandoFile = require(`./comandos/${comando}.js`)
-            comandoFile.run(client, message, args);
-        } catch (err) {
-            console.log(`Algo deu errado!\nErro:${err}`)
+        if (comando == "dados") {
+            callCmd(client, message, args, comando)
         }
     }
 })
-
 client.login(secret)
+
+function callCmd(client, message, args, comando) {
+    try {
+        const comandoFile = require(`./comandos/${comando}.js`)
+        comandoFile.run(client, message, args);
+    } catch (err) {
+        console.log(`Algo deu errado!\nErro:${err}`)
+    }
+}
