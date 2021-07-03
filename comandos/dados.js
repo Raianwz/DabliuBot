@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
         for (let i = 0; i < args.length; i++) {
             calc += Number(args[i])
             if (isNaN(calc)) {
-                return message.channel.send(`<:peepoClown:858694142124752917> ${user.toString()} Digite apenas número e evite espaços entre + e o - em um número(+1,-1).`)
+                return message.channel.send(`<:peepoClown:858694142124752917> ${user.toString()} Digite apenas números e evite espaços entre + e o - em um número(+1,-1).`)
             }
         }
     }
