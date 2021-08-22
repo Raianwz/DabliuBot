@@ -5,10 +5,10 @@
   "author": "RaianWZ",
   "license": "MIT",
   "scripts": {
-    "start":"node ."
+    "start": "node ."
   },
   "dependencies": {
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0"
   }
 }

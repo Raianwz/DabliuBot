@@ -1,9 +1,10 @@
+const { Client, Intents } = require('discord.js');
 const dotenv = require("dotenv")
-const Discord = require('discord.js');
-const client = new Discord.Client()
 const config = require("./config.json");
 if (process.env.NODE_ENV != 'production') { dotenv.config() }
 const secret = process.env.TOKEN
+const client = new Client({ intents: ["GUILDS","GUILD_MESSAGES"] });
+
 
 client.on('ready', () => {
     client.user.setActivity('!Dados & FRIFAS', ({ type: "PLAYING" }))
@@ -11,7 +12,7 @@ client.on('ready', () => {
     console.log(`Bot iniciado em ${client.channels.cache.size} canais de ${client.guilds.cache.size} servidores`)
 })
 
-client.on('message', message => {
+client.on('messageCreate', async message => {
     if (message.author.bot) return;
     if (message.channel.type == 'dm') return;
     if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return
