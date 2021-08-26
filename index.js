@@ -16,13 +16,15 @@ client.on('messageCreate', async message => {
     if (message.author.bot) return;
     if (message.channel.type == 'dm') return;
     if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return
-    if (message.content.startsWith(config.prefix) && message.content.length > 3) {
+    if (message.content.startsWith(config.prefix) && message.content.length > 2) {
         const args = message.content
             .trim().slice(config.prefix.length)
             .split(/ +/g);
         const comando = args.shift().toLocaleLowerCase();
-        if (comando == "dados") {
-            callCmd(client, message, args, comando)
+        if (comando == "dados" || comando == "roll" || comando == "dd") {
+            let cmd = comando
+            cmd !== "dados" ? cmd = "dados" : cmd
+            callCmd(client, message, args, cmd)
         }
     }
 })
