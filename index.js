@@ -3,7 +3,7 @@ const dotenv = require("dotenv")
 const config = require("./config.json");
 if (process.env.NODE_ENV != 'production') { dotenv.config() }
 const secret = process.env.TOKEN
-const client = new Client({ intents: ["GUILDS","GUILD_MESSAGES"] });
+const client = new Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 
 client.on('ready', () => {
@@ -27,6 +27,33 @@ client.on('messageCreate', async message => {
     }
 })
 client.login(secret)
+
+// client.on('interactionCreate', async interaction => {
+//     if (!interaction.isButton()) return;
+//     const comandoFile = require(`./comandos/intDados.js`)
+//     let customNum = (num, cLabel) => {
+//         let temp = cLabel.replace('Dados','')
+//         num = Number(temp)
+//         console.log(num)
+//         return num;
+//     }
+
+//     let inter = interaction.component.type
+//     if( inter === 'BUTTON'){
+//         let btn = await interaction.component.customId, num = 0;
+//         let cLabel = await interaction.component.label;
+//         btn === 'roll' ? num = 0 : false
+//         btn === 'roll1' ? num = 1 : false
+//         btn === 'roll2' ? num = 2 : false
+//         btn === 'roll3' ? num = 3 : false
+//         btn === 'rollC' ? num = customNum(num,cLabel): false
+//         await comandoFile.run(client, interaction, `${num}`);
+//         return
+//     }else{
+//         interaction.message.reply({ content: `<:DankMan:858715889343004702> ${interaction.message.author} Algo deu errado, use o **!dados**`})
+//     }
+
+// });
 
 function callCmd(client, message, args, comando) {
     try {
