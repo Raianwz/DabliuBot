@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
     const user = message.author;
     const val = ['-1', '0', '+1']
     let atributo = 0, calc = 0;
-    let emote = "<:HmmNote:919290616490360852>"
+    let emote = "<:HmmNote:915409970328121374>"
 
     //filtrando argumentos
     if (args.length == 1) {
